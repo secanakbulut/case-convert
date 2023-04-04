@@ -1,0 +1,212 @@
+:root {
+  --bg: #0e1014;
+  --surface: #161a22;
+  --surface-2: #1d222c;
+  --line: #262c38;
+  --text: #e6e9ef;
+  --muted: #8b93a4;
+  --accent: #7cdba0;
+  --accent-2: #59b87f;
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 480px at 85% -10%, rgba(124, 219, 160, 0.10), transparent 60%),
+    radial-gradient(800px 400px at -10% 110%, rgba(80, 120, 255, 0.08), transparent 55%),
+    var(--bg);
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.top h1 {
+  font-size: 38px;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+.top .sub {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+
+.input-card { padding: 14px; }
+
+.src {
+  width: 100%;
+  min-height: 96px;
+  resize: vertical;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 15px;
+  outline: none;
+  line-height: 1.45;
+}
+
+.src:focus { border-color: var(--accent-2); }
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding: 0 4px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+.link:hover { color: var(--text); }
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: stretch;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+
+.row:hover {
+  border-color: var(--accent-2);
+  background: #181d27;
+}
+
+.row .label {
+  padding: 12px 14px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: lowercase;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  border-right: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+}
+
+.row .value {
+  padding: 12px 14px;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 14px;
+  word-break: break-word;
+  white-space: pre-wrap;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.row .value.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.row.copied {
+  border-color: var(--accent);
+}
+
+.info h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.info p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #c2c8d4;
+}
+
+.info p.small { font-size: 12px; color: var(--muted); }
+
+.info code {
+  background: var(--surface-2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface);
+  border: 1px solid var(--accent-2);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 520px) {
+  .top h1 { font-size: 30px; }
+  .row { grid-template-columns: 110px 1fr; }
+  .row .label { font-size: 11px; padding: 10px; }
+  .row .value { font-size: 13px; padding: 10px; }
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

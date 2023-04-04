@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>case-convert</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>case-convert</h1>
+      <p class="sub">paste anything, get every common case. click one to copy.</p>
+    </header>
+
+    <section class="card input-card">
+      <textarea
+        id="src"
+        class="src"
+        placeholder="type or paste here. e.g. helloWorld, my_var_name, some-css-thing, A Sentence Like This"
+        spellcheck="false"
+      >helloWorld example_text</textarea>
+      <div class="meta">
+        <span id="wordCount" class="muted">0 words</span>
+        <button id="clear" class="link">clear</button>
+      </div>
+    </section>
+
+    <section class="results" id="results">
+      <!-- filled in by js -->
+    </section>
+
+    <section class="card info">
+      <h2>how it works</h2>
+      <p>
+        Conversion is two steps. First the input is split into a list of words.
+        Boundaries are: any non-alphanumeric run (space, dash, underscore, dot, slash),
+        a lowercase letter followed by uppercase (<code>helloWorld</code> &rarr; <code>hello | World</code>),
+        and a run of capitals followed by a capital plus lowercase (<code>HTMLParser</code> &rarr; <code>HTML | Parser</code>).
+        Digits stick to the previous word.
+      </p>
+      <p>
+        Then those words get re-joined in whichever style you want. So <code>HTMLParser_v2</code>
+        and <code>html-parser-v2</code> both end up as the same word list, and convert to the same output.
+      </p>
+      <p class="small">
+        No build step, one file each. Open <code>index.html</code>.
+      </p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

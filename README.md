@@ -1,5 +1,7 @@
 # case-convert
 
+![](docs/screenshot.png)
+
 Tiny converter for the cases you actually use in code. Paste anything in, you get camelCase, PascalCase, snake_case, CONSTANT_CASE, kebab-case, Title Case, sentence case, plus dot, slash and no-space variants. Click any of them to copy.
 
 I kept needing this and kept hitting random ad-heavy sites for it. So, one file.
